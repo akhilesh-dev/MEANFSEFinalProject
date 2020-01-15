@@ -1,0 +1,39 @@
+<h2 class="text-center">Add Task</h2>
+<form>
+  <div class="form-group">
+    <label for="project">Project:</label>
+    <input [(ngModel)]="task.projectId" placeholder="Project" name="projectId" class="form-control" id="projectId">
+  </div>
+  <div class="form-group">
+    <label for="taskName"> Task:</label>
+    <input [(ngModel)]="task.taskName" placeholder="TaskName" name="taskName" class="form-control" id="taskName">
+  </div>
+  <input type="checkbox" [(ngModel)]="task.isParent" name="isParent">Parent Task
+  <div class="form-group">
+    <label for="priority"> Priority:</label>
+   <input type="range" [(ngModel)]="task.priority" placeholder="Priority" name="priority" min="1" max="10" step="1" [disabled]="task.isParent" class="form-control" id="priority">
+  </div>
+  <div class="form-group">
+    <label for="parent"> Parent Task:</label>
+    <input [(ngModel)]="task.parentId" placeholder="Parent Task" name="parent" [disabled]="task.isParent" class="form-control" id="parent">
+  </div>
+  <div class="form-group">
+    <label for="startDate"> Start Date:</label>
+    <input type="date" [(ngModel)]="task.startDate" placeholder="startDate" name="startDate" [disabled]="task.isParent" class="date" id="startDate">
+  </div>
+  <div class="form-group">
+    <label for="endDate"> End Date:</label>
+    <input type="date" [(ngModel)]="task.endDate" placeholder="endDate" name="endDate" [disabled]="task.isParent" class="date" id="endDate">
+  </div>
+  <div class="form-group">
+    <label for="status"> Status:</label>
+    <input [(ngModel)]="task.status" placeholder="Status" name="status" [disabled]="task.isParent" class="form-control" id="status">
+  </div>
+  <div class="form-group">
+    <label for="employeeId"> Employee ID:</label>
+    <input [(ngModel)]="task.employeeId" placeholder="Employee ID" name="employeeId" [disabled]="task.isParent" class="form-control" id="employeeId">
+  </div>
+  <button class="btn btn-primary" (click)="createTask()" style="margin:0 10px 0 0">Add</button>         
+  <button type="reset" class="btn btn-primary" id="reset-btn" (click)="reset()">Reset</button> 
+  <div class="text-danger" style="text-align: left; margin-top: 10px;" *ngIf="error.isError">{{error.errorMessage}}</div>
+</form>
